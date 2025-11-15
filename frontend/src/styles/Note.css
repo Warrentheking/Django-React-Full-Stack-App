@@ -1,33 +1,130 @@
-.note-container {
-  padding: 10px;
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Note Card with Glass Effect */
+.note-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.note-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #6366f1, #8b5cf6);
+}
+
+.note-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.note-header {
+    margin-bottom: 1rem;
 }
 
 .note-title {
-  color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    word-wrap: break-word;
+    line-height: 1.4;
 }
 
 .note-content {
-  color: #666;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    flex-grow: 1;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(229, 231, 235, 0.6);
+    gap: 1rem;
 }
 
 .note-date {
-  color: #999;
-  font-size: 0.8rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.delete-button {
-  background-color: #f44336; /* Red */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.delete-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
 }
 
-.delete-button:hover {
-  background-color: #d32f2f; /* Darker red */
+.delete-btn:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .note-card {
+        padding: 1rem;
+    }
+
+    .note-title {
+        font-size: 1.1rem;
+    }
+
+    .note-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .delete-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
